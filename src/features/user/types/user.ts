@@ -1,4 +1,3 @@
-/** Conta do GitHub consultada: pessoa ou organização. */
 export type User = {
   login: string;
   name: string | null;

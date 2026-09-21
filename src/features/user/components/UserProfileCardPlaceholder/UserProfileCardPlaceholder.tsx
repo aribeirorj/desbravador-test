@@ -1,9 +1,7 @@
-/** Esqueleto no formato do cartão: a página não "pula" quando os dados chegam. */
 export function UserProfileCardPlaceholder() {
   return (
-    <div className="card shadow-sm" aria-busy="true">
-      <span className="visually-hidden">Carregando perfil…</span>
-      <div className="card-body placeholder-glow" aria-hidden="true">
+    <div className="card shadow-sm">
+      <div className="card-body placeholder-glow">
         <div className="text-center">
           <span
             className="placeholder rounded-circle d-inline-block mb-3"

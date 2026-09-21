@@ -1,5 +1,5 @@
-import { http } from '../../infra/http/client';
-import type { User } from './types';
+import { http } from '@/shared/lib/http';
+import type { User } from '@/features/user/types/user';
 
 type GitHubUser = {
   login: string;

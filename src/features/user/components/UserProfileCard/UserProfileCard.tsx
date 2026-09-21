@@ -1,8 +1,8 @@
-import { InfoItem, InfoList } from '../../../components/InfoList';
-import { formatNumber } from '../../../formatters';
-import type { User } from '../types';
-import { sizedAvatarUrl } from '../utils/sizedAvatarUrl';
-import styles from './UserProfileCard.module.css';
+import { InfoItem, InfoList } from '@/shared/components';
+import { formatNumber } from '@/shared/lib/formatters';
+import type { User } from '@/features/user/types/user';
+import { sizedAvatarUrl } from '@/features/user/utils/sizedAvatarUrl';
+import styles from '@/features/user/components/UserProfileCard/UserProfileCard.module.css';
 
 export function UserProfileCard({ user }: { user: User }) {
   return (
@@ -20,7 +20,6 @@ export function UserProfileCard({ user }: { user: User }) {
           {user.name && <p className="text-body-secondary mb-0">{user.login}</p>}
         </div>
 
-        {/* dt antes de dd no HTML; flex-column-reverse põe o número em cima. */}
         <dl className="row g-0 text-center my-4">
           <div className="col d-flex flex-column-reverse">
             <dt className="small text-body-secondary fw-normal">seguidores</dt>
