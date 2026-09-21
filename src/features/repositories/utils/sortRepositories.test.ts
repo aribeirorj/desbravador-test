@@ -1,19 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import type { Repository } from '../types';
-import { SORT_OPTIONS, sortRepositories } from '../utils/sortRepositories';
-
-function repo(name: string, stars: number, pushedAt: string | null = null): Repository {
-  return { owner: 'x', name, stars, pushedAt, description: null, language: null, url: '' };
-}
+import type { Repository } from '@/features/repositories/types/repository';
+import { SORT_OPTIONS, sortRepositories } from '@/features/repositories/utils/sortRepositories';
+import { makeRepository } from '@/features/repositories/testing/makeRepository';
 
 const [starsDesc, starsAsc, nameAsc, pushedDesc] = SORT_OPTIONS;
 const names = (repos: Repository[]) => repos.map((r) => r.name);
 
 describe('sortRepositories', () => {
   const repos = [
-    repo('beta', 10, '2026-01-01T00:00:00Z'),
-    repo('alpha', 50, '2025-01-01T00:00:00Z'),
-    repo('gamma', 30, '2026-06-01T00:00:00Z'),
+    makeRepository({ name: 'beta', stars: 10, pushedAt: '2026-01-01T00:00:00Z' }),
+    makeRepository({ name: 'alpha', stars: 50, pushedAt: '2025-01-01T00:00:00Z' }),
+    makeRepository({ name: 'gamma', stars: 30, pushedAt: '2026-06-01T00:00:00Z' }),
   ];
 
   it('ordena por mais estrelas', () => {
@@ -29,12 +26,20 @@ describe('sortRepositories', () => {
   });
 
   it('ordena nomes ignorando maiúsculas e entendendo números', () => {
-    const list = [repo('repo10', 0), repo('Repo2', 0), repo('repo1', 0)];
+    const list = [
+      makeRepository({ name: 'repo10', stars: 0 }),
+      makeRepository({ name: 'Repo2', stars: 0 }),
+      makeRepository({ name: 'repo1', stars: 0 }),
+    ];
     expect(names(sortRepositories(list, nameAsc))).toEqual(['repo1', 'Repo2', 'repo10']);
   });
 
   it('desempata por nome, nas duas direções', () => {
-    const ties = [repo('c', 0), repo('a', 0), repo('b', 0)];
+    const ties = [
+      makeRepository({ name: 'c', stars: 0 }),
+      makeRepository({ name: 'a', stars: 0 }),
+      makeRepository({ name: 'b', stars: 0 }),
+    ];
     expect(names(sortRepositories(ties, starsDesc))).toEqual(['a', 'b', 'c']);
     expect(names(sortRepositories(ties, starsAsc))).toEqual(['a', 'b', 'c']);
   });

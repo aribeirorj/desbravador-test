@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { SORT_OPTIONS, type SortOption } from '../utils/sortRepositories';
+import { SORT_OPTIONS, type SortOption } from '@/features/repositories/utils/sortRepositories';
 
 type SortSelectProps = {
   value: SortOption;

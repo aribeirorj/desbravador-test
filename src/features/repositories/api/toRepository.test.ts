@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { toRepository, type GitHubRepository } from '../api';
+import { toRepository, type GitHubRepository } from '@/features/repositories/api/toRepository';
 
 describe('toRepository', () => {
-  it('converte o JSON do GitHub para o tipo do domínio, preservando null', () => {
+  it('converte o JSON do GitHub para Repository, preservando null', () => {
     const data: GitHubRepository = {
       name: 'linux',
       owner: { login: 'torvalds' },

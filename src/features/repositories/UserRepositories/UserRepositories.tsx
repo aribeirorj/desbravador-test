@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
-import { ApiErrorState } from '../../components/ApiErrorState';
-import { EmptyState } from '../../components/EmptyState';
-import { formatNumber } from '../../formatters';
-import type { User } from '../user/types';
-import { RepositoryList } from './components/RepositoryList';
-import { RepositoryListPlaceholder } from './components/RepositoryListPlaceholder';
-import { SortSelect } from './components/SortSelect';
-import { useSortParams } from './hooks/useSortParams';
-import { useUserRepositories } from './hooks/useUserRepositories';
-import { sortRepositories } from './utils/sortRepositories';
+import { ApiErrorState, EmptyState } from '@/shared/components';
+import { formatNumber } from '@/shared/lib/formatters';
+import type { User } from '@/features/user/types/user';
+import {
+  RepositoryList,
+  RepositoryListPlaceholder,
+  SortSelect,
+} from '@/features/repositories/components';
+import { useSortParams } from '@/features/repositories/hooks/useSortParams';
+import { useUserRepositories } from '@/features/repositories/hooks/useUserRepositories';
+import { sortRepositories } from '@/features/repositories/utils/sortRepositories';
 
-/** Seção de Repositórios da página do Usuário: busca, ordena e pagina na tela. */
 export function UserRepositories({ user }: { user: User | undefined }) {
   const listing = useUserRepositories(user);
   const { sortOption, limit, setSort, showMore } = useSortParams();
@@ -48,9 +48,9 @@ export function UserRepositories({ user }: { user: User | undefined }) {
   }
 
   return (
-    <section aria-labelledby="repositories-heading">
+    <section>
       <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
-        <h2 id="repositories-heading" className="h4 mb-0">
+        <h2 className="h4 mb-0">
           Repositórios
           {user && (
             <span className="badge text-bg-secondary ms-2 align-middle fs-6">

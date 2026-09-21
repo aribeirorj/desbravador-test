@@ -1,10 +1,9 @@
-import { formatNumber } from '../../../formatters';
-import type { Repository } from '../types';
-import { RepositoryCard } from './RepositoryCard';
+import { formatNumber } from '@/shared/lib/formatters';
+import type { Repository } from '@/features/repositories/types/repository';
+import { RepositoryCard } from '@/features/repositories/components/RepositoryCard/RepositoryCard';
 
 type RepositoryListProps = {
   repositories: Repository[];
-  /** Quantos Repositórios existem na lista ordenada (antes do "Mostrar mais"). */
   loaded: number;
   onShowMore: () => void;
 };

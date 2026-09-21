@@ -1,20 +1,16 @@
-import { Link, useLocation } from 'react-router';
-import { repositoryPath } from '../paths';
-import type { Repository } from '../types';
-import styles from './RepositoryCard.module.css';
-import { Stars } from './Stars';
+import { Link } from 'react-router';
+import { repositoryPath } from '@/features/repositories/paths';
+import type { Repository } from '@/features/repositories/types/repository';
+import styles from '@/features/repositories/components/RepositoryCard/RepositoryCard.module.css';
+import { Stars } from '@/features/repositories/components/Stars/Stars';
 
 export function RepositoryCard({ repository }: { repository: Repository }) {
-  // A página de detalhes volta para a lista com a mesma Ordenação e quantidade visível.
-  const { search } = useLocation();
-
   return (
     <article className="card h-100 shadow-sm">
       <div className="card-body d-flex flex-column gap-2">
         <h3 className="h6 mb-0 text-break">
           <Link
             to={repositoryPath(repository.owner, repository.name)}
-            state={{ listSearch: search }}
             className="stretched-link text-decoration-none"
           >
             {repository.name}

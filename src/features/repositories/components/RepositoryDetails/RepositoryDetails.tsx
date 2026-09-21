@@ -1,9 +1,8 @@
-import { InfoItem, InfoList } from '../../../components/InfoList';
-import type { Repository } from '../types';
-import { Stars } from './Stars';
+import { InfoItem, InfoList } from '@/shared/components';
+import type { Repository } from '@/features/repositories/types/repository';
+import { Stars } from '@/features/repositories/components/Stars/Stars';
 
 export function RepositoryDetails({ repository }: { repository: Repository }) {
-  // Defesa extra: só vira link externo o que de fato aponta para o GitHub.
   const isGitHubUrl = repository.url.startsWith('https://github.com/');
 
   return (
@@ -21,8 +20,7 @@ export function RepositoryDetails({ repository }: { repository: Repository }) {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              Ver no GitHub <span aria-hidden="true">↗</span>
-              <span className="visually-hidden"> (abre em nova aba)</span>
+              Ver no GitHub ↗
             </a>
           )}
         </div>
