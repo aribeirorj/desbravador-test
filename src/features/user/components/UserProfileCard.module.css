@@ -1,0 +1,5 @@
+.bio {
+  /* A bio do GitHub pode ter quebras de linha. */
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
