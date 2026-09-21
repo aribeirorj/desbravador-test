@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { NotInformed } from './NotInformed';
+import { NotInformed } from '@/shared/components/NotInformed/NotInformed';
 
 export function InfoList({ children }: { children: ReactNode }) {
   return <dl className="mb-0">{children}</dl>;
@@ -7,11 +7,9 @@ export function InfoList({ children }: { children: ReactNode }) {
 
 type InfoItemProps = {
   label: string;
-  /** Vazio (`null`, `undefined`, `''`, `false`) vira "Não informado". */
   children: ReactNode;
 };
 
-/** Campo obrigatório: sempre aparece, mesmo quando o dado não existe. */
 export function InfoItem({ label, children }: InfoItemProps) {
   const isEmpty =
     children === null || children === undefined || children === '' || children === false;

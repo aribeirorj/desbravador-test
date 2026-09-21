@@ -2,9 +2,7 @@ import type { ReactNode } from 'react';
 
 type ErrorStateProps = {
   title: string;
-  /** `h1` quando o erro ocupa a página inteira; `h2` quando é só uma seção. */
   headingAs?: 'h1' | 'h2';
-  /** Descrição e ações (links, botão "Tentar novamente"...). */
   children?: ReactNode;
 };
 
