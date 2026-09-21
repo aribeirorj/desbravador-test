@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { renderRoute } from '../../../testing/renderRoute';
-import { searchUsers } from '../api';
-import { SearchPage } from '../SearchPage';
+import { renderRoute } from '@/shared/testing/renderRoute';
+import { searchUsers } from '@/features/search/api/searchUsers';
+import { SearchPage } from '@/features/search/SearchPage/SearchPage';
 
-vi.mock('../api', () => ({ searchUsers: vi.fn() }));
+vi.mock('@/features/search/api/searchUsers', () => ({ searchUsers: vi.fn() }));
 
 describe('SearchPage', () => {
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('SearchPage', () => {
       });
   });
 
-  it('busca uma única vez após o Visitante parar de digitar e grava o termo na URL', async () => {
+  it('busca uma única vez depois que o usuário para de digitar e grava o termo na URL', async () => {
     const router = renderRoute(SearchPage, '/', '/');
 
     await userEvent.type(screen.getByRole('searchbox'), '@linus');
@@ -42,7 +42,7 @@ describe('SearchPage', () => {
     expect(searchUsers).not.toHaveBeenCalled();
   });
 
-  it('restaura a Busca a partir da URL', async () => {
+  it('restaura a busca a partir da URL', async () => {
     renderRoute(SearchPage, '/', '/?q=linus');
 
     expect(screen.getByRole('searchbox')).toHaveValue('linus');

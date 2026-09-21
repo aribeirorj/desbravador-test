@@ -1,8 +1,7 @@
-import { http } from '../../infra/http/client';
-import type { UserSearchResponse } from './types';
+import { http } from '@/shared/lib/http';
+import type { UserSearchResponse } from '@/features/search/types/userSearch';
 
-/** Resultados exibidos por Busca: os mais relevantes segundo o GitHub. */
-export const SEARCH_PAGE_SIZE = 10;
+const SEARCH_PAGE_SIZE = 10;
 
 type GitHubUserSearchResponse = {
   total_count: number;

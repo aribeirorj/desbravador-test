@@ -1,5 +1,4 @@
-/** Usuário candidato retornado por uma Busca, conhecido só de forma resumida. */
-export type UserSearchResult = {
+type UserSearchResult = {
   login: string;
   avatarUrl: string;
 };

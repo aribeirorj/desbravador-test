@@ -5,18 +5,10 @@ type SearchFormProps = {
   onChange: (value: string) => void;
   onSubmit: () => void;
   busy?: boolean;
-  compact?: boolean;
   autoFocus?: boolean;
 };
 
-export function SearchForm({
-  value,
-  onChange,
-  onSubmit,
-  busy,
-  compact,
-  autoFocus,
-}: SearchFormProps) {
+export function SearchForm({ value, onChange, onSubmit, busy, autoFocus }: SearchFormProps) {
   const inputId = useId();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -29,12 +21,12 @@ export function SearchForm({
       <label htmlFor={inputId} className="visually-hidden">
         Buscar usuário do GitHub pelo username ou nome
       </label>
-      <div className={`input-group ${compact ? 'input-group-sm' : 'input-group-lg'}`}>
+      <div className="input-group input-group-lg">
         <input
           id={inputId}
           type="search"
           className="form-control"
-          placeholder={compact ? 'Buscar usuário' : 'Username ou nome, ex.: torvalds'}
+          placeholder="Username ou nome, ex.: torvalds"
           value={value}
           onChange={(event) => onChange(event.target.value)}
           maxLength={256}
@@ -45,7 +37,7 @@ export function SearchForm({
           autoFocus={autoFocus}
         />
         <button type="submit" className="btn btn-primary">
-          {busy && <span className="spinner-border spinner-border-sm me-2" aria-hidden="true" />}
+          {busy && <span className="spinner-border spinner-border-sm me-2" />}
           Buscar
         </button>
       </div>
