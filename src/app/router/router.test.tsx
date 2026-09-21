@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router';
-import { describe, expect, it } from 'vitest';
-import { routes } from '../router';
+import { describe, expect, it, vi } from 'vitest';
+import { routes } from '@/app/router/router';
+
+vi.mock('@/features/user/api/getUser', () => ({ getUser: vi.fn(() => new Promise(() => {})) }));
 
 function renderAt(path: string) {
   render(
@@ -26,5 +28,12 @@ describe('rotas', () => {
     renderAt('/');
 
     expect(await screen.findByRole('heading', { level: 1 })).toBeInTheDocument();
+  });
+
+  it('não mostra a busca no header fora da página inicial', async () => {
+    renderAt('/users/torvalds');
+
+    expect(await screen.findByRole('heading', { name: 'Repositórios' })).toBeInTheDocument();
+    expect(screen.queryByRole('search')).not.toBeInTheDocument();
   });
 });

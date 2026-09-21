@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
-import { ErrorState } from '../components/ErrorState';
-import { PageTitle } from '../components/PageTitle';
+import { ErrorState, PageTitle } from '@/shared/components';
 
 export function NotFoundPage() {
   return (
