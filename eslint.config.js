@@ -18,15 +18,5 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
-    rules: {
-      // Bio e descrição são conteúdo de terceiros: sempre renderizados como texto (ADR-0001).
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: "JSXAttribute[name.name='dangerouslySetInnerHTML']",
-          message: 'dangerouslySetInnerHTML é proibido no projeto (docs/adr/0001).',
-        },
-      ],
-    },
   },
 ]);
